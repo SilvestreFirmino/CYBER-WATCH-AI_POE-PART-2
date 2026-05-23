@@ -68,6 +68,34 @@
             Background="Black"
       
       >
+            <!--logo-->
+            <Image
+                Height="100"
+                Width="200"
+                   Margin="0,0,578,298" 
+                   Source="/eyelogo2.png"
+                   x:Name="logo2" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                   
+                   />
+            <!--brand -->
+            <TextBlock
+                Text="CYBER             AI"
+                FontFamily="Trebuchet MS"
+                FontSize="24"
+                FontWeight="Bold"
+                Foreground="White"
+                Margin="22,140,580,149"
+                />
+
+            <TextBlock Text="WATCH"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="RED"
+                       Margin="97,137,595,247"
+                       >
+
+
+            </TextBlock>
             <!--start of chat page grid-->
             <!--list view to show chats-->
 
@@ -75,27 +103,35 @@
           Background="Black"
                 BorderThickness="2"
                 FontFamily="Trebuchet MS"
-         Height="350"
-         Margin="158,12,141,72"
+                Foreground="White"
+                Height="350"
+                Width="500"
+                Margin="225,12,75,72"
          x:Name="chats"
           
           />
 
             <!--the question TextBox-->
             <TextBox
-         Height="50"
-         Margin="158,367,400,17"
-         x:Name="question"
+                Height="50"
+                Width="250"
+                x:Name="question"
+                Background="Black"
+                BorderThickness="2"
+                FontFamily="Trebuchet MS"
+                Foreground="White"      
+                Margin="225,367,325,17"
           
           />
 
             <!-- Button to submit the question -->
             <Button
          Height="50"
-         Width="200"
-         Margin="459,367,141,17"
-         Content="send"
-         FontSize="16"
+         Width="250"
+         Margin="475,367,75,17"
+         Content="SEND"
+         FontSize="17"
+         FontWeight="Bold"       
          Click="send"
          Background="red"
           Foreground="Black"
