@@ -15,17 +15,16 @@
             and a navigation button to proceed to the next section.
             Currently hidden by default.
         -->
-        <Grid x:Name="home_grid" Visibility="Hidden"
+        <Grid x:Name="home_grid" Visibility="Visible"
               Background="Black">
 
 
             <!-- Logo -->
 
             <Image 
-                Source="/eyelogo2.png" 
-                Height="200"
-                Width="300"
-                Margin="0,0,0,200"
+                Source="/eyelogo2.png"
+                Margin="0,30,0,0" HorizontalAlignment="Center" Width="300" Height="200" VerticalAlignment="Top"
+                Opacity="0.6"
                    />
             <!-- welcome message-->
 
@@ -33,7 +32,8 @@
 
             <TextBlock
                 Text="CYBER WATCHER AI chatbot,"
-                Foreground="Red"
+                Foreground="White"
+                FontWeight="Bold"
                 Height="38"
                 FontFamily="Trebuchet MS"
                 TextAlignment="Center"
@@ -57,9 +57,9 @@
                 Height="38"
                 FontFamily="Trebuchet MS"
                 TextAlignment="Center"
-                Margin="0,268,0,0"
-                FontSize="18"
-                Foreground="White" HorizontalAlignment="Center" Width="518" VerticalAlignment="Top"
+                Margin="141,273,0,0"
+                FontSize="16"
+                Foreground="White" HorizontalAlignment="Left" Width="518" VerticalAlignment="Top"
                 />
 
             <!-- button to continue-->
@@ -68,12 +68,12 @@
                 
                 Height="40"
                 Width="200"
-                Margin="0,200,0,0"
+                Margin="0,311,0,0"
                 Content="ENTER"
                 FontSize="18"
                 Click="proceed"
                 Foreground="White"
-                FontFamily="Trebuchet MS"
+                FontFamily="Trebuchet MS" HorizontalAlignment="Center" VerticalAlignment="Top"
                 />
 
         </Grid>
@@ -90,18 +90,22 @@
 
             <!-- Logo -->
             <Image 
+                Height= "200"
+                Width="300"
                 Source="/eyelogo2.png"
-                Margin="281,20,281,283"
+                Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"
+                Opacity="0.6"
                    />
             <TextBlock
                      Text="CYBER WATCHER AI chatbot"
                      Foreground="White"
+                FontWeight="Bold"
                      Height="38"
                      FontFamily="Trebuchet MS"
                      TextAlignment="Center"
-                     Margin="0,150,141,0"
+                     Margin="0,165,0,0"
                      FontSize="26"
-                     HorizontalAlignment="Right" Width="518" VerticalAlignment="Top"
+                     HorizontalAlignment="Center" Width="518" VerticalAlignment="Top"
     />
             <!-- Hint message-->
             <TextBlock
@@ -160,11 +164,12 @@
             and a submit button to send the question to the chat.
             Starting in a hidden state.
         -->
-        <Grid x:Name="chat_grid" Visibility="Hidden">
+        <Grid x:Name="chat_grid" Visibility="Hidden" Background="Black">
 
 
             <!-- List view to show messages show messages-->
             <ListView  
+                Background="Black"
                 x:Name="chats" 
                 Height="300"
                 Margin="0,0,0,120"
@@ -173,6 +178,9 @@
 
             <!-- TextBox to prompt questions-->
             <TextBox
+                Background="Black"
+                Foreground="White"
+                FontFamily="Trebuchet MS"
                 x:Name="question"
                 Height="50"
                 Width="480"
@@ -184,8 +192,10 @@
                 Height="50"
                 Width="280"
                 Margin="490,300,0,0"
-                Content="send "
+                Content="SUBMIT  "
                 Click="send"
+                Background="DarkRed"
+                Foreground="White"
                 />
 
         </Grid>

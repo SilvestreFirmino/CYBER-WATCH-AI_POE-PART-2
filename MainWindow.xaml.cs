@@ -414,39 +414,47 @@ namespace CYBER_WATCH_AI_POE_PART_2
         // Updated error method with better formatting
         private void error_method(string name, string message)
         {
-            // Create a border for chats
+            // Create message bubble
             Border messageBorder = new Border
             {
-                Margin = new Thickness(0, 2, 0, 2),
-                Padding = new Thickness(5, 3, 5, 3),
-                CornerRadius = new CornerRadius(5)
+                Margin = new Thickness(8, 5, 8, 5),
+                Padding = new Thickness(10),
+                CornerRadius = new CornerRadius(10),
+                BorderThickness = new Thickness(1.5)
             };
 
-            // Set different background for user vs bot
-            if (name.ToLower().Contains("chatbot") || name.ToLower().Contains("chat"))
-            {// Light blue
-                messageBorder.Background = new SolidColorBrush(Color.FromRgb(240, 248, 255));
-                messageBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(173, 216, 230));
-            }
-            else
-            {    // Light gray
-                messageBorder.Background = new SolidColorBrush(Color.FromRgb(245, 245, 245));
-                messageBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(211, 211, 211));
-            }
-            messageBorder.BorderThickness = new Thickness(1);
+            bool isBot = name.ToLower().Contains("chatbot") ||
+                         name.ToLower().Contains("chat");
 
+            // BOT STYLE
+            if (isBot)
+            {
+                messageBorder.Background = new SolidColorBrush(Color.FromRgb(20, 20, 20));
+                messageBorder.BorderBrush = Brushes.DarkRed;
+            }
+            // USER STYLE
+            else
+            {
+                messageBorder.Background = new SolidColorBrush(Color.FromRgb(35, 35, 35));
+                messageBorder.BorderBrush = Brushes.Red;
+            }
+
+            // Message text
             TextBlock messageText = new TextBlock
             {
                 TextWrapping = TextWrapping.Wrap,
-                Margin = new Thickness(2)
+                Margin = new Thickness(2),
+                FontFamily = new FontFamily("Trebuchet MS"),
+                FontSize = 14
             };
 
-            // Set color based on sender
-            Brush nameColor = (name.ToLower().Contains("chatbot") || name.ToLower().Contains("chat")) ?
-                              Brushes.DarkRed : Brushes.White;
+            // Username colors
+            Brush nameColor = isBot ? Brushes.Red : Brushes.White;
 
-            Brush messageColor = Brushes.Black;
+            // Message colors
+            Brush messageColor = Brushes.White;
 
+            // Username
             messageText.Inlines.Add(new Run
             {
                 Text = name + ": ",
@@ -454,31 +462,22 @@ namespace CYBER_WATCH_AI_POE_PART_2
                 FontWeight = FontWeights.Bold
             });
 
+            // Actual message
             messageText.Inlines.Add(new Run
             {
                 Text = message,
                 Foreground = messageColor
             });
 
+            // Add text into border
             messageBorder.Child = messageText;
+
+            // Add to chat
             chats.Items.Add(messageBorder);
 
+            // Auto-scroll
             chats.ScrollIntoView(chats.Items[chats.Items.Count - 1]);
-        }//end of error method
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
 
