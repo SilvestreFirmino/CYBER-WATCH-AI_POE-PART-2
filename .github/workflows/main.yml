@@ -1,0 +1,94 @@
+name: Build CYBER-WATCH-AI WPF App
+ 
+# --- TRIGGERS ---
+# This workflow runs in two situations:
+on:
+  # 1. When you push (upload) code to the main or master branch
+  push:
+    branches:
+      - main
+      - master
+ 
+  # 2. When someone opens a Pull Request targeting main or master
+  pull_request:
+    branches:
+      - main
+      - master
+ 
+# --- JOBS ---
+# A job is a set of steps that run on a virtual machine (runner).
+jobs:
+ 
+  # ---- JOB 1: Build the project ----
+  build:
+    name: Build WPF Application
+    # WPF apps only compile on Windows, so we use a Windows runner.
+    runs-on: windows-latest
+ 
+    steps:
+ 
+      # STEP 1: Download your repository code onto the runner machine
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # STEP 2: Install MSBuild (the tool that compiles C#/WPF projects)
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+ 
+      # STEP 3: Install NuGet (the tool that downloads external libraries)
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+ 
+      # STEP 4: Download all NuGet packages your project depends on
+      - name: Restore NuGet packages
+        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj
+ 
+      # STEP 5: Compile the project in Release mode
+      # Release mode = optimised build ready for users (not debug/testing)
+      - name: Build Project (Release)
+        run: >
+          msbuild CYBER-WATCH-AI_POE-PART-2.csproj
+          /p:Configuration=Release
+          /p:Platform=AnyCPU
+          /verbosity:minimal
+ 
+      # STEP 6: Upload the compiled output so you can download it from GitHub
+      # After the workflow runs, go to: Actions tab → your run → Artifacts section
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CYBER-WATCH-AI-Release-Build
+          # This path is where MSBuild puts the compiled files
+          path: bin\Release\
+          # Keep the artifact for 30 days before GitHub deletes it
+          retention-days: 30
+ 
+  # ---- JOB 2: Check that the build also works in Debug mode ----
+  # Debug mode includes extra info that helps you find bugs while developing.
+  build-debug:
+    name: Build WPF Application (Debug check)
+    runs-on: windows-latest
+    # Only run this debug check on pushes, not on every pull request
+    if: github.event_name == 'push'
+ 
+    steps:
+ 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+ 
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+ 
+      - name: Restore NuGet packages
+        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj
+ 
+      - name: Build Project (Debug)
+        run: >
+          msbuild CYBER-WATCH-AI_POE-PART-2.csproj
+          /p:Configuration=Debug
+          /p:Platform=AnyCPU
+          /verbosity:minimal
+ 
