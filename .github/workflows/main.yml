@@ -41,7 +41,7 @@ jobs:
  
       # STEP 4: Download all NuGet packages your project depends on
       - name: Restore NuGet packages
-        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj
+        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj -SolutionDirectory .
  
       # STEP 5: Compile the project in Release mode
       # Release mode = optimised build ready for users (not debug/testing)
@@ -83,7 +83,7 @@ jobs:
         uses: NuGet/setup-nuget@v2
  
       - name: Restore NuGet packages
-        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj
+        run: nuget restore CYBER-WATCH-AI_POE-PART-2.csproj -SolutionDirectory .
  
       - name: Build Project (Debug)
         run: >
