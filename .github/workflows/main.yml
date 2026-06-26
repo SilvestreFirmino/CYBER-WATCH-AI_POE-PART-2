@@ -49,7 +49,7 @@ jobs:
         run: >
           msbuild CYBER-WATCH-AI_POE-PART-2.csproj
           /p:Configuration=Release
-          /p:Platform=AnyCPU
+          /p:Platform=x64
           /verbosity:minimal
  
       # STEP 6: Upload the compiled output so you can download it from GitHub
