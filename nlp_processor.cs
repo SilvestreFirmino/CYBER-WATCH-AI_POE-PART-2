@@ -96,7 +96,7 @@ namespace CYBER_WATCH_AI_POE_PART_2
             {
                 return "[SYSTEM_ACTION:START_QUIZ]";
             }
-            if (loweredInput.Contains("add task") || loweredInput.Contains("remind me to"))
+            if (loweredInput.Contains("add task") || loweredInput.Contains("remind me"))
             {
                 try
                 {
