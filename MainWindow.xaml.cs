@@ -185,7 +185,7 @@ namespace CYBER_WATCH_AI_POE_PART_2
             {
                 log_append.ScrollIntoView(log_append.Items[log_append.Items.Count - 1]);
             }
-            // ───────────────────────────────────────────────────────────
+            // ──────────────────────────────────────────────────────────
         }
 
         // Switch to the Game page
