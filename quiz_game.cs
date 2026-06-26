@@ -6,7 +6,7 @@ namespace CYBER_WATCH_AI_POE_PART_2
     public class quiz_game
     {
         public void autoLoadQuiz(ref List<quiz_question> questions)
-        {
+        {// questions
             questions = new List<quiz_question>()
             {
                 new quiz_question

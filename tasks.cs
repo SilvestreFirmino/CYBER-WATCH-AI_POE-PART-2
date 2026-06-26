@@ -21,7 +21,7 @@ namespace CYBER_WATCH_AI_POE_PART_2
 
         //call this once when the app starts
         //step 1: make sure the pro_tasks database itself exists
-        //step 2: make sure the demo_tasks table exists inside pro_tasks
+        //step 2: make sure the demo_tasks table exists inside pro_tasks.
         public void CreateTableIfNotExists()
         {//start
 

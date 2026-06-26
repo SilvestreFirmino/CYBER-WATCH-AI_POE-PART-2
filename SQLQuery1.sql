@@ -4,7 +4,7 @@
 use [pro_tasks];
 GO
 
---creating a table [entity]
+--creating a table [entity]...
 --colummns are task_id, task_name, task_description, task_status, task_priority, task_due_date, task_created_at, task_updated_at
 -- list of the columns
 --task_name data type is varchar() and not null

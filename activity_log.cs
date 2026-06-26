@@ -18,7 +18,7 @@ namespace CYBER_WATCH_AI_POE_PART_2
         private string filename = "activity_log.txt";
 
 
-        //constructor - runs once when the activity_log object is first created
+        //constructor - runs once when the activity_log object is first created.
         public activity_log()
         {
             entries = new List<string>();
